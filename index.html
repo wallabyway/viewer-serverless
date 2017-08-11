@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Serverless Express Viewer Example</title>
+	    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=no" />
+	    <link rel="shortcut icon" href="#" />		
+	    <link rel="stylesheet" href="https://developer.api.autodesk.com/viewingservice/v1/viewers/style.min.css?v=v2.15" type="text/css">
+	    <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/three.min.js?v=v2.15"></script>
+	    <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/viewer3D.js?v=v2.15"></script>
+	    <script src="/latest/js/init.js"></script>
+	</head>
+    <body onload="initializeViewer();" style="margin:0">
+	    <div id="forgeViewer" ></div>
+	</body>
+
+	<script>
+		var viewerApp;
+
+	    function initializeViewer() {
+
+			function onLoadSuccess() {
+			  var viewables = viewerApp.bubble.search({ 'type': 'geometry' });
+			  if (viewables.length > 0)
+			  	viewerApp.selectItem(viewables[0].data);
+			};
+
+			function onInitialized() {
+				viewerApp = new Autodesk.Viewing.ViewingApplication('forgeViewer');
+				viewerApp.registerViewer( viewerApp.k3D, Autodesk.Viewing.Private.GuiViewer3D );	
+				viewerApp.loadDocument( options.urn, onLoadSuccess);
+			};
+
+			Autodesk.Viewing.Initializer( options, onInitialized);
+		}
+	    
+	</script>
+</html>
