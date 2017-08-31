@@ -2,7 +2,7 @@
 
 **Live Demo**: [https://adc6qwtnce.execute-api.us-east-1.amazonaws.com/tutorial/](https://adc6qwtnce.execute-api.us-east-1.amazonaws.com/tutorial/)
 
-**YouTube**: [demo]()
+**YouTube**: [demo](https://www.youtube.com/watch?v=aK-nIFZqslI)
 
 ![updateForgeGif](img/forgeclaudia.gif)
 
