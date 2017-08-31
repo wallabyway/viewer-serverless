@@ -4,37 +4,37 @@ const forge = require('forge-apis')
 const app = express()
 
 
-const FORGE_CLIENT_ID = "<insert forge id>";
-const FORGE_CLIENT_SECRET = "<insert forge secret>";
-const URN = "urn:<insert document id here>";
+if (!process.env.FORGE_URN) {
+	console.log('Error - Please set environment variables and restart.');
+	return;
+}
+
+const URN = "urn:" + process.env.FORGE_URN;
 
 // gets oauth token from Forge API
 const oAuth2TwoLegged = new forge.AuthClientTwoLegged(
-	FORGE_CLIENT_ID,
-	FORGE_CLIENT_SECRET,
+	process.env.FORGE_CLIENT_ID,
+	process.env.FORGE_CLIENT_SECRET,
 	['viewables:read'])
 
 
-// Send options as a javascript file to the viewer
+// The browser will ask for a fresh Access Token as a javascript file
 app.get('/js/init.js', (req, res) => {
 	oAuth2TwoLegged.authenticate().then( function(restoken) {
 		res.send(` 
-		options = {
-			accessToken: "${restoken.access_token}",
-			env: "AutodeskProduction",
-			urn: "${URN}"
-		};
+			options = {
+				accessToken: "${restoken.access_token}",
+				env: "AutodeskProduction",
+				urn: "${URN}"
+			};
 		`);
-		console.log(`ForgeToken: ${restoken.access_token}`);
+		console.log(`Sent ForgeToken: ${restoken.access_token}`);
 	});
 })
 
 // handle static files
-app.get('/', (req, res) => {
-    res.sendFile(`${__dirname}/index.html`)
-})
+app.use(express.static(__dirname + '/www'));
 
-// to debug locally with nodejs ...
-// app.listen(3000) // <--  uncomment this line, and run >node app.js
+// app.listen(3000); // <-- uncomment this line for local debugging, then type: >node app.js
 
 module.exports = app

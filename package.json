@@ -1,12 +1,13 @@
 {
-  "name": "claudia-express",
+  "name": "forge-claudia",
   "version": "1.0.0",
-  "description": "Example application for running a Node Express app on AWS Lambda using Amazon API Gateway.",
+  "description": "Forge Viewer with Faster Serverless deployment using Claudia.js",
   "main": "lambda.js",
   "scripts": {
-    "deploy": "claudia create --handler lambda.handler --deploy-proxy-api --region us-east-1",
-    "update": "claudia update",
-    "generate-proxy": "claudia generate-serverless-express-proxy --express-module app"
+    "create": "claudia create --handler lambda.handler --deploy-proxy-api --region us-east-1 --version tutorial",
+    "setvars": "claudia set-version --version tutorial --set-env FORGE_CLIENT_ID=xxx,FORGE_CLIENT_SECRET=xxx,FORGE_URN=xxx",
+    "update": "claudia update --version tutorial",
+    "destroy": "claudia destroy"
   },
   "license": "Apache-2.0",
   "dependencies": {
