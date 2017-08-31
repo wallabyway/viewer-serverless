@@ -22,6 +22,8 @@ Before you start, make sure you have [npm and AWS credentials](https://vincetocc
 4. Run `npm run setvars` to push the environment variables to Lambda.
 5. Open the 'new URL' in a browser
 
+**Example:** [https://adc6qwtnce.execute-api.us-east-1.amazonaws.com/tutorial/](https://adc6qwtnce.execute-api.us-east-1.amazonaws.com/tutorial/)
+
 > Remember to add a '/' or a '/index.html' to the URL.
 
 ## Updating the app
