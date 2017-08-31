@@ -1,19 +1,20 @@
-# Forge-Serverless-HelloWorld
+# ForgeViewer-Serverless
 
-This is the 'hello world' example for Forge viewer running on AWS-Lambda aka 'serverless'.
+**Live Demo**: [https://adc6qwtnce.execute-api.us-east-1.amazonaws.com/tutorial/](https://adc6qwtnce.execute-api.us-east-1.amazonaws.com/tutorial/)
 
-Live Demo: [https://adc6qwtnce.execute-api.us-east-1.amazonaws.com/tutorial/](https://adc6qwtnce.execute-api.us-east-1.amazonaws.com/tutorial/)
+**YouTube**: [demo]()
 
 ![updateForgeGif](img/forgeclaudia.gif)
 
+This is the 'hello world' example of [Autodesk Forge Viewer](https://developer.autodesk.com/en/docs/viewer/v2/overview/) deployed to [AWS-Lambda](aws.amazon.com/Lambda‎)... aka 'Serverless'.
 
-  The backend stack is [Node.js](https://claudiajs.com/tutorials/serverless-express.html) / [Express](http://expressjs.com/) and ['Claudia.js'](https://claudiajs.com/tutorials/serverless-express.html) is used to simplify deploy.
 
-Inspired by [this blog post](https://forge.autodesk.com/blog/running-forge-viewer-aws-lambda-server-and-api-gateway), by Philippe Leefsma.
+To simplify deploy to AWS-Lambda, I use ['Claudia.js'](https://claudiajs.com/tutorials/serverless-express.html).  The backend stack is [Node.js](https://claudiajs.com/tutorials/serverless-express.html) / [Express](http://expressjs.com/).  
 
 Below I demonstrate ['Claudia.js'](https://claudiajs.com/tutorials/serverless-express.html) 'update' command to re-deploy a small html code change. Claudia handles the task of zipping, uploading and re-wiring node.js endpoints to 'AWS-Lambda & API-Gateway' automatically. 
 
 ## Getting Started
+Before you start, make sure you have [npm and AWS credentials](https://vincetocco.com/serverless-code/) setup.
 
 1. Run `npm install`
 2. Run `npm run create` to send everything up to AWS Lambda. It will return a 'new URL'.
@@ -65,3 +66,5 @@ https://vincetocco.com/serverless-code/)
 
 
 [Why use Claudia?](https://github.com/claudiajs/claudia/blob/master/FAQ.md)
+
+Inspired by [this blog post](https://forge.autodesk.com/blog/running-forge-viewer-aws-lambda-server-and-api-gateway), by Philippe Leefsma.
